@@ -21,7 +21,12 @@ public class Produto {
 	}
 	
 	public void setId(long id) {
-		this.id = id;
+		if(id > 0) {
+			this.id = id;
+		}
+		else {
+			throw new IllegalArgumentException("Id deve ser maior que 0");
+		}
 	}
 	
 	public String getDescricao() {
@@ -30,24 +35,28 @@ public class Produto {
 	
 	public void setDescricao(String descricao) {
 		
-		if(descricao == null) {
-			throw new IllegalArgumentException("A descrição não pode ser em branca");
+		if(!descricao.isBlank() || !descricao.isEmpty()) {
+			this.descricao = descricao;
 		}	
 		else {
-			if(descricao.isBlank()) throw new IllegalArgumentException("A descricao nao pode ser em branca");
-			else {
-				this.descricao = descricao;
-			}
+			throw new IllegalArgumentException("A descricao nao pode ser em branca");
 		}
 			
 	}
+	
 	
 	public String getCategoria() {
 		return categoria;
 	}
 	
 	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+		if(!categoria.isBlank() || !categoria.isEmpty()) {
+			this.categoria = categoria;
+		}
+		
+		else {
+			throw new IllegalArgumentException("Categoria nao pode estar em branco");
+		}
 	}
 	
 	public double getCusto() {
@@ -55,7 +64,12 @@ public class Produto {
 	}
 	
 	public void setCusto(double custo) {
-		this.custo = custo;
+		if(custo > 10 && custo < 9999) {
+			this.custo = custo;
+		}
+		else {
+			throw new IllegalArgumentException("Custo deve estar entre 10 e 9999");
+		}
 	}
 	
 	public int getQuantidadeNoEstoque() {
@@ -63,7 +77,12 @@ public class Produto {
 	}
 	
 	public void setQuantidadeNoEstoque(int quantidadeNoEstoque) {
-		this.quantidadeNoEstoque = quantidadeNoEstoque;
+		if(quantidadeNoEstoque > 10) {
+			this.quantidadeNoEstoque = quantidadeNoEstoque;
+		}
+		else {
+			throw new IllegalArgumentException("Quantidade deve ser maior ou igual a 10");
+		}
 	}
 
 	

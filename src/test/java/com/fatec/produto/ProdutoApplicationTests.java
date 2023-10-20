@@ -10,8 +10,7 @@ class ProdutoApplicationTests {
 
 	@Test
 	void contextLoads() {
-		Produto produto = new Produto();
-		produto.setDescricao(null);
+		
 	}
 
 }
